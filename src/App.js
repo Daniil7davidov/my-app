@@ -2,20 +2,14 @@ import React from 'react';
 
 
 function App() {
-    let [index, setIndex] = React.useState(0)
-
-    function plusOne(){
-        setIndex(index+1)
-    }
-
+    let numbers = [0,1,2,3,4,5];
+    let listNumbers = numbers.map((number)=><li>{number}</li>)
     return (
         <div className="App">
-            <h1>{index}</h1>
-            <button onClick={plusOne}>+</button>
-            <button onClick={()=>setIndex(index-1)}>-</button>
-            <button onClick={()=>setIndex(0)}>0</button>
+            {listNumbers}
         </div>
     );
 }
+
 
 export default App;
