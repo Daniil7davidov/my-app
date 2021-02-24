@@ -7,6 +7,7 @@ function App() {
     return (
         <div className="App">
             <h1>{index}</h1>
+            <button onClick={()=>setIndex(index+1)}>+</button>
         </div>
     );
 }
