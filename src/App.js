@@ -2,17 +2,21 @@ import React from 'react';
 
 
 function App() {
-    //отрисовка списка
-    let numbers = [0,1,2,3,4,5];
-    let listNumbers = numbers.map((number)=><li>{number}</li>)
-    listNumbers = [];
-    for (let i = 0; i<numbers.length; i++){
-        listNumbers.push(<li>{numbers[i]}</li>)
+
+    function add() {
+        setNumbers([...numbers, text])
+        setText('')
     }
-    console.log(listNumbers);
+    //отрисовка списка
+    let [text, setText] = React.useState('')
+    let [numbers, setNumbers] = React.useState([1, 2, 3, 4, 5, 6])
+    let listNumbers = numbers.map((number)=><li>{number}</li>)
+    
     return (
         <div className="App">
             {listNumbers}
+            <input type="text" value={text} onChange={e=>setText(e.target.value)}/>
+            <button onClick={add}>+</button>
         </div>
     );
 }
