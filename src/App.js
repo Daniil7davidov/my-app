@@ -1,10 +1,14 @@
 import React from 'react';
 
+import firebase from "firebase";
+
 import ListItem from './ListItem';
 
 function App() {
 
     function add() {
+        let db = firebase.firestore();
+        db.collection('todos').add({'todo': text})
         setNumbers([...numbers, text])
         setText('')
     }
