@@ -1,5 +1,6 @@
 import React from 'react';
 
+import ListItem from './ListItem';
 
 function App() {
 
@@ -7,10 +8,15 @@ function App() {
         setNumbers([...numbers, text])
         setText('')
     }
+
+    function remove(idx){
+        numbers.splice(idx, 1)
+        setNumbers([...numbers])
+    }
     //отрисовка списка
     let [text, setText] = React.useState('')
-    let [numbers, setNumbers] = React.useState([1, 2, 3, 4, 5, 6])
-    let listNumbers = numbers.map((number)=><li>{number}</li>)
+    let [numbers, setNumbers] = React.useState(["potato", "orange"])
+    let listNumbers = numbers.map((number, idx)=><ListItem text={number} idx={idx} remove={remove}/>)
     
     return (
         <div className="App">
