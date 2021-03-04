@@ -1,35 +1,57 @@
-import React from 'react';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Component1 from "./components/component1";
 
-import firebase from "firebase";
 
-import ListItem from './ListItem';
+export default function App() {
+  return (
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/users">Users</Link>
+            </li>
+          </ul>
+        </nav>
 
-function App() {
-
-    function add() {
-        let db = firebase.firestore();
-        db.collection('todos').add({'todo': text})
-        setNumbers([...numbers, text])
-        setText('')
-    }
-
-    function remove(idx){
-        numbers.splice(idx, 1)
-        setNumbers([...numbers])
-    }
-    //отрисовка списка
-    let [text, setText] = React.useState('')
-    let [numbers, setNumbers] = React.useState(["potato", "orange"])
-    let listNumbers = numbers.map((number, idx)=><ListItem text={number} idx={idx} remove={remove}/>)
-    
-    return (
-        <div className="App">
-            {listNumbers}
-            <input type="text" value={text} onChange={e=>setText(e.target.value)}/>
-            <button onClick={add}>+</button>
-        </div>
-    );
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/component1">
+            <Component1 />
+          </Route>
+          <Route path="/users">
+            <Users />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
 }
 
+function Home() {
+  return <h2>Home</h2>;
+}
 
-export default App;
+function About() {
+  return <h2>About</h2>;
+}
+
+function Users() {
+  return <h2>Users</h2>;
+}
