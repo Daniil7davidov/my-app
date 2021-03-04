@@ -6,7 +6,20 @@ import {
   Link
 } from "react-router-dom";
 import Component1 from "./components/component1";
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 
+firebase.firestore.collection("users").add({
+  first: "Ada",
+  last: "Lovelace",
+  born: 1815
+})
+.then((docRef) => {
+  console.log("Document written with ID: ", docRef.id);
+})
+.catch((error) => {
+  console.error("Error adding document: ", error);
+});
 
 export default function App() {
   return (
